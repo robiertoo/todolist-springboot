@@ -1,5 +1,7 @@
 package br.com.robiertoo.todolist.model.entities;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +19,7 @@ public class Task {
 	@NotNull
 	private String name;
 
-	private boolean completed;
+	private Date completedAt;
 
 	public Task() {
 		// TODO Auto-generated constructor stub
@@ -26,7 +28,7 @@ public class Task {
 	public Task(String name) {
 		super();
 		this.name = name;
-		this.completed = false;
+		this.completedAt = null;
 	}
 
 	public int getId() {
@@ -45,12 +47,12 @@ public class Task {
 		this.name = name;
 	}
 
-	public boolean isCompleted() {
-		return completed;
+	public Date getCompletedAt() {
+		return completedAt;
 	}
 
-	public void setCompleted(boolean completed) {
-		this.completed = completed;
+	public void setCompletedAt(Date completedAt) {
+		this.completedAt = completedAt;
 	}
 
 }

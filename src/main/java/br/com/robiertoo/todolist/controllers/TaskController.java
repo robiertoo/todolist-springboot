@@ -1,5 +1,6 @@
 package br.com.robiertoo.todolist.controllers;
 
+import java.util.Date;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -45,7 +46,13 @@ public class TaskController {
 	
 	@PutMapping("/{id}/complete")
 	public Optional<Task> completeTask(@PathVariable int id) {
-		taskRepository.completeTask(id);
+		taskRepository.completeTask(new Date(), id);
+		return taskRepository.findById(id);
+	}
+
+	@PutMapping("/{id}/uncomplete")
+	public Optional<Task> uncompleteTask(@PathVariable int id) {
+		taskRepository.uncompleteTask(id);
 		return taskRepository.findById(id);
 	}
 }

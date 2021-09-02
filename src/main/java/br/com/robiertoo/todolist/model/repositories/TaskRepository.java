@@ -1,5 +1,7 @@
 package br.com.robiertoo.todolist.model.repositories;
 
+import java.util.Date;
+
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
@@ -11,7 +13,12 @@ public interface TaskRepository extends PagingAndSortingRepository<Task, Integer
 	
 	@Transactional
 	@Modifying
-	@Query("UPDATE Task SET completed = 1 WHERE id = :id")
-	public void completeTask(int id);
+	@Query("UPDATE Task SET completedAt = :date WHERE id = :id")
+	public void completeTask(Date date,  int id);
+	
+	@Transactional
+	@Modifying
+	@Query("UPDATE Task SET completedAt = null WHERE id = :id")
+	public void uncompleteTask(int id);
 	
 }
