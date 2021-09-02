@@ -18,7 +18,7 @@ import br.com.robiertoo.todolist.model.entities.Task;
 import br.com.robiertoo.todolist.model.repositories.TaskRepository;
 
 @RestController
-@RequestMapping("/api/items")
+@RequestMapping("/api/tasks")
 public class TaskController {
 	@Autowired
 	private TaskRepository taskRepository;
